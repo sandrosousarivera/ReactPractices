@@ -1,8 +1,9 @@
-# React + Vite
+Hi 👋🏻, my name is Sandro Sousa, I'm a web developer.
+In this repository you will be able to see some simple mini projects I did while studying ReactJS.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+I created this mini project using Vite, is from a series of tutorials I'm following in order to get the hang of ReactJS
+and be able to start building responsive, animated and reusable web components for my future projects.
 
-Currently, two official plugins are available:
+You can find me on LinkedIn following this link 👉🏻 https://www.linkedin.com/in/sandrosousarivera/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+CHEERS!!
