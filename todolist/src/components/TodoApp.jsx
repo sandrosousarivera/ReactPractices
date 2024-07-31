@@ -1,8 +1,9 @@
 import { useState } from "react";
 import Todo from "./todo";
+import "./todoApp.css";
 
 export default function TodoApp() {
-  const [title, setTitle] = useState("Hola");
+  const [title, setTitle] = useState("First task, Click that button! -->");
   const [todos, setTodos] = useState([]);
 
   function handleChange(event) {
@@ -12,6 +13,10 @@ export default function TodoApp() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (title.trim() === "") {
+      alert("El elemento no puede estar vacío.");
+      return;
+    }
     const newTodo = {
       id: crypto.randomUUID(),
       title: title,
@@ -22,6 +27,8 @@ export default function TodoApp() {
     temp.unshift(newTodo);
 
     setTodos(temp);
+
+    setTitle("");
   }
 
   function handleUpdate(id, value) {
@@ -37,6 +44,8 @@ export default function TodoApp() {
     setTodos(temp);
   }
 
+  //↓↓Here is the container of the visual app↓↓//
+
   return (
     <div className="todoContainer">
       <form className="todoCreateForm" onSubmit={handleSubmit}>
@@ -45,7 +54,7 @@ export default function TodoApp() {
           onClick={handleSubmit}
           type="submit"
           value="Create todo"
-          className="ButtonCreate"
+          className="buttonCreate"
         />
       </form>
 
