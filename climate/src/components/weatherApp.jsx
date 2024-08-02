@@ -18,6 +18,9 @@ export default function WeatherApp() {
       }
 
       const json = await response.json();
+
+      setWeather(json);
+
       console.log(json); // Imprime los datos en la consola
       setWeather(json); // Establece el estado del clima
     } catch (error) {
@@ -34,7 +37,7 @@ export default function WeatherApp() {
   return (
     <div>
       <WeatherForm onChangeCity={handleChangeCity} />
-      <div>Info</div>
+      <div>{weather?.current.temp_c}</div>
     </div>
   );
 }
