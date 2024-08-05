@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import WeatherForm from "./weatherForm";
 import WeatherMainInfo from "./weatherMainInfo";
 import styles from "./weatherApp.module.css";
+import Loading from "./loading"; // Asegúrate de tener este componente
 
 export default function WeatherApp() {
   const [weather, setWeather] = useState(null);
@@ -29,10 +30,11 @@ export default function WeatherApp() {
 
       const json = await response.json();
 
-      setWeather(json);
-
       console.log(json); // Imprime los datos en la consola
-      setWeather(json); // Establece el estado del clima
+
+      setTimeout(() => {
+        setWeather(json); // Establece el estado del clima después de 2 segundos
+      }, 1500);
     } catch (error) {
       console.error("Error fetching weather data:", error); // Manejo de errores
     }
@@ -47,7 +49,7 @@ export default function WeatherApp() {
   return (
     <div className={styles.weatherContainer}>
       <WeatherForm onChangeCity={handleChangeCity} />
-      <WeatherMainInfo weather={weather} />
+      {weather ? <WeatherMainInfo weather={weather} /> : <Loading />}
     </div>
   );
 }
