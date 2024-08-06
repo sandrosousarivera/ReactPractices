@@ -21,15 +21,13 @@ export default function WeatherMainInfo({ weather }) {
         </div>
       </div>
       <iframe
-        src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d317716.60640415194!2d${weather?.location.lon}944!3d${weather?.location.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1
-        s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondres%2C%20Reino%20Unido!5e0!3m2!1ses!2ses!4v
-        1722847018741!5m2!1ses!2ses`}
+        src={`https://www.google.com/maps?q=${weather?.location.lat},${weather?.location.lon}&z=14&output=embed`}
         width="100%"
         height="450"
-        style={{ border: "0" }}
-        allowfullscreen=""
+        style={{ border: 0 }}
+        allowFullScreen=""
         loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
+        referrerPolicy="no-referrer-when-downgrade"
       ></iframe>
     </div>
   );
