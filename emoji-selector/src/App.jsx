@@ -1,7 +1,7 @@
-import EmojiPicker from "./components/emoji-picker/emojiPicker.jsx";
+import EmojiPickerInput from "./components/emoji-picker/emojiPickerInput";
 
 function App() {
-  return <EmojiPicker />;
+  return <EmojiPickerInput />;
 }
 
 export default App;
