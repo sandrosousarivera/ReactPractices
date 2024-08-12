@@ -1,12 +1,23 @@
-import { forwardRef, useState } from "react";
+import { forwardRef, useState, useRef, useEffect } from "react";
 import { data as emojiList } from "./data";
 import EmojiSearch from "./emojiSearch";
 import EmojiButton from "./emojiButton";
-import "/Users/sandro/LOCAL/pyoyectos react/emoji-selector/src/App.css";
+import styles from "/Users/sandro/LOCAL/pyoyectos react/emoji-selector/src/components/emoji-picker/emojiPicker.module.scss";
 
 export function EmojiPicker(props, inputRef) {
   const [isOpen, setIsOpen] = useState(false);
   const [emojis, setEmojis] = useState(emojiList);
+
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    window.addEventListener("click", (e) => {
+      if (!containerRef.current.contains(e.target)) {
+        setIsOpen(false);
+        setRmojis(emojiList);
+      }
+    });
+  }, []);
 
   function handleClickOpen() {
     setIsOpen(!isOpen);
@@ -42,13 +53,15 @@ export function EmojiPicker(props, inputRef) {
   }
 
   return (
-    <div>
-      <button onClick={handleClickOpen}>Emojis</button>
+    <div ref={containerRef} className={styles.inputContainer}>
+      <button onClick={handleClickOpen} className={styles.emojiPickerButton}>
+        😍
+      </button>
 
       {isOpen ? (
-        <div>
+        <div className={styles.emojiPickerContainer}>
           <EmojiSearch onSearch={handleSearch} />
-          <div className="botonEmoji">
+          <div className={styles.emojiList}>
             {emojis.map((emoji) => (
               <EmojiButton
                 key={emoji.symbol}
