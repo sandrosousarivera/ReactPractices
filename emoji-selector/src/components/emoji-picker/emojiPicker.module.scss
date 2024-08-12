@@ -12,13 +12,15 @@ input {
   width: 400px;
   height: 350px;
   border: solid 1px white;
-  background-color: #222;
+  background-color: #ded8c9;
   display: flex;
   flex-direction: column;
   padding: 15px;
   box-sizing: border-box;
-  top: 30px;
+  top: 55px;
   border-radius: 5px;
+  z-index: 10;
+  overflow: hidden;
 }
 
 .emojiPickerButton {
@@ -30,10 +32,12 @@ input {
   padding: 10px;
 }
 
-.emojisList {
+.emojiList {
   display: flex;
   flex-wrap: wrap;
   margin-top: 10px;
+  overflow-y: auto;
+  max-height: 300px;
 }
 
 .emojiButton {
