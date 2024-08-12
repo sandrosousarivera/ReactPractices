@@ -2,6 +2,7 @@ import { forwardRef, useState } from "react";
 import { data as emojiList } from "./data";
 import EmojiSearch from "./emojiSearch";
 import EmojiButton from "./emojiButton";
+import "/Users/sandro/LOCAL/pyoyectos react/emoji-selector/src/App.css";
 
 export function EmojiPicker(props, inputRef) {
   const [isOpen, setIsOpen] = useState(false);
@@ -47,7 +48,7 @@ export function EmojiPicker(props, inputRef) {
       {isOpen ? (
         <div>
           <EmojiSearch onSearch={handleSearch} />
-          <div>
+          <div className="botonEmoji">
             {emojis.map((emoji) => (
               <EmojiButton
                 key={emoji.symbol}

@@ -1,0 +1,9 @@
+.botonEmoji {
+  max-height: 200px;
+  width: 200px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  background-color: white;
+  position: absolute;
+  z-index: 1000;
+}
