@@ -28,7 +28,17 @@ export function EmojiPicker(props, inputRef) {
     }
   }
 
-  function handleOnClickEmoji(emoji) {}
+  function handleOnClickEmoji(emoji) {
+    const cursorPos = inputRef.current.selectionStart;
+    const text = inputRef.current.value;
+    const prev = text.slice(0, cursorPos);
+    const next = text.slice(cursorPos);
+
+    inputRef.current.value = prev + emoji.symbol + next;
+    inputRef.current.selectionStart = cursorPos + emoji.symbol.length;
+    inputRef.current.selectionEnd = cursorPos + emoji.symbol.length;
+    inputRef.current.focus();
+  }
 
   return (
     <div>
