@@ -2,31 +2,39 @@ import { forwardRef, useState, useRef, useEffect } from "react";
 import { data as emojiList } from "./data";
 import EmojiSearch from "./emojiSearch";
 import EmojiButton from "./emojiButton";
-import styles from "/Users/sandro/LOCAL/pyoyectos react/emoji-selector/src/components/emoji-picker/emojiPicker.module.scss";
+import styles from "./emojiPicker.module.scss"; // Asegúrate de que la ruta sea correcta
 
-export function EmojiPicker(props, inputRef) {
+function EmojiPicker(props, inputRef) {
   const [isOpen, setIsOpen] = useState(false);
   const [emojis, setEmojis] = useState(emojiList);
 
   const containerRef = useRef(null);
 
   useEffect(() => {
-    window.addEventListener("click", (e) => {
-      if (!containerRef.current.contains(e.target)) {
+    const handleClickOutside = (e) => {
+      if (containerRef.current && !containerRef.current.contains(e.target)) {
         setIsOpen(false);
-        setRmojis(emojiList);
+        setEmojis(emojiList);
       }
-    });
+    };
+
+    window.addEventListener("click", handleClickOutside);
+    return () => {
+      window.removeEventListener("click", handleClickOutside);
+    };
   }, []);
 
   function handleClickOpen() {
     setIsOpen(!isOpen);
+    if (!isOpen) {
+      setEmojis(emojiList);
+    }
   }
 
   function handleSearch(e) {
     const q = e.target.value.toLowerCase();
 
-    if (!!q) {
+    if (q) {
       const search = emojiList.filter((emoji) => {
         return (
           emoji.name.toLowerCase().includes(q) ||
@@ -58,7 +66,7 @@ export function EmojiPicker(props, inputRef) {
         😍
       </button>
 
-      {isOpen ? (
+      {isOpen && (
         <div className={styles.emojiPickerContainer}>
           <EmojiSearch onSearch={handleSearch} />
           <div className={styles.emojiList}>
@@ -66,13 +74,11 @@ export function EmojiPicker(props, inputRef) {
               <EmojiButton
                 key={emoji.symbol}
                 emoji={emoji}
-                onClick={handleOnClickEmoji}
+                onClick={() => handleOnClickEmoji(emoji)}
               />
             ))}
           </div>
         </div>
-      ) : (
-        ""
       )}
     </div>
   );
