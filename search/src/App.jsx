@@ -1,13 +1,15 @@
 import { useState } from "react";
-import { people } from "../constants/people";
-import { emails } from "../constants/emails";
-import { calendar } from "../constants/calendar";
+import { people } from "/Users/sandro/LOCAL/pyoyectos react/search/constants/people.jsx";
+import { emails } from "/Users/sandro/LOCAL/pyoyectos react/search/constants/emails.jsx";
+import { calendar } from "/Users/sandro/LOCAL/pyoyectos react/search/constants/calendar.jsx";
+import SearchBar from "./components/searchBar";
 
 function App() {
   const [data, setData] = useState([...people, ...calendar, ...emails]);
 
   const [selection, setSelection] = useState(null);
   const [currentOption, setCurrentOption] = useState("all");
+  const [count, setCount] = useState(0);
 
   function handleClick(e) {
     const op = e.target.name;
@@ -54,6 +56,8 @@ function App() {
       <button onClick={handleClick} name="emails">
         Emails
       </button>
+      <button onClick={() => setCount(count + 1)}>{count}</button>
+      <SearchBar items={data} onItemSelected={() => {}} />
     </div>
   );
 }

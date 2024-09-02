@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Results from "./results";
 
 export default function SearchBar({ items, onItemSelected }) {
   const [query, setQuery] = useState("");
@@ -9,9 +10,20 @@ export default function SearchBar({ items, onItemSelected }) {
     setQuery(value);
   }
 
+  function handleResults(items) {
+    setResults(items);
+  }
+
   return (
     <div>
+      {results && <div>{results.length} results</div>}
       <input type="text" onChange={handleChange} value={query} />
+      <Results
+        items={items}
+        onItemSelected={() => {}}
+        query={query}
+        onResultsCalculated={handleResults}
+      />
     </div>
   );
 }
