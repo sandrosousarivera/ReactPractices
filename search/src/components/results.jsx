@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
+import MarkedItem from "./markedItem";
 
 export default function Results({
   items,
@@ -21,10 +22,18 @@ export default function Results({
     setResults(res);
     return res;
   }
+
   return (
     <div>
       {query != " "
-        ? filteredItems.map((item) => <div key={item.id}>{item.title}</div>)
+        ? filteredItems.map((item) => (
+            <MarkedItem
+              key={item.id}
+              item={item}
+              query={query}
+              onClick={onItemSelected}
+            />
+          ))
         : ""}
     </div>
   );
