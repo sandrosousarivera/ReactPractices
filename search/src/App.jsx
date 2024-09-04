@@ -12,18 +12,22 @@ const Container = styled.div`
   align-items: center;
   padding: 20px;
   font-family: Arial, sans-serif;
+  font-family: "Asap", sans-serif;
 `;
 
 const Header = styled.header`
-  width: 100%;
+  width: 80%;
   background-color: #f5f5f5;
   padding: 10px 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 4px 0px rgba(40, 116, 166, 0.63);
   text-align: center;
+  font-family: "Asap", sans-serif;
+  color: rgba(40, 116, 166, 1);
 `;
 
 const ButtonContainer = styled.div`
   margin: 20px 0;
+  font-family: "Asap", sans-serif;
 `;
 
 const Button = styled.button`
@@ -34,6 +38,7 @@ const Button = styled.button`
   border: solid 1px #ccc;
   cursor: pointer;
   margin: 0 5px;
+  font-family: "Asap", sans-serif;
 
   &:hover {
     background-color: #efefef;
@@ -48,12 +53,14 @@ const Content = styled.div`
   max-width: 800px;
   width: 100%;
   text-align: center;
+  font-family: "Asap", sans-serif;
 `;
 
 const SelectionDisplay = styled.div`
   margin: 20px 0;
   font-size: 16px;
   color: #333;
+  font-family: "Asap", sans-serif;
 `;
 
 function App() {
@@ -97,7 +104,7 @@ function App() {
   return (
     <Container>
       <Header>
-        <h1>My App</h1>
+        <h1>Search for animals, car brands or countries!</h1>
       </Header>
       <ButtonContainer>
         <Button
