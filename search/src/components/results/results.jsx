@@ -1,11 +1,11 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import MarkedItem from "../markedItem/markedItem";
 import styled from "styled-components";
 
 //STYLED COMPONENTS//
 const ResultsContainer = styled.div`
   position: absolute;
-  width: 400px;
+  width: 100%; // Ancho flexible para mejor adaptabilidad en móviles
   background: white;
   border: solid 1px #222;
   border-top: solid 1px transparent;
@@ -21,24 +21,30 @@ export default function Results({
   onResultsCalculated,
 }) {
   const [results, setResults] = useState([]);
+
+  // Utilizamos useMemo para optimizar el filtrado
   const filteredItems = useMemo(() => findMatch(items, query), [items, query]);
 
-  useEffect(() => {
-    onResultsCalculated(results);
-  }, [results]);
-
+  // Función para encontrar coincidencias
   function findMatch(items, query) {
     const res = items.filter((i) => {
-      return i.title.toLowerCase().indexOf(query) >= 0 && query.length > 0;
+      // Convertimos ambos a minúsculas para una búsqueda insensible a mayúsculas
+      return (
+        i.title.toLowerCase().indexOf(query.toLowerCase()) >= 0 &&
+        query.length > 0
+      );
     });
 
+    // Actualizamos los resultados y notificamos los resultados calculados
     setResults(res);
+    onResultsCalculated(res);
     return res;
   }
 
   return (
     <ResultsContainer>
-      {query != " "
+      {/* Asegúrate de que no sea solo espacios vacíos */}
+      {query.trim() !== ""
         ? filteredItems.map((item) => (
             <MarkedItem
               key={item.id}

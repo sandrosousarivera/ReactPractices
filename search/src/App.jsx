@@ -4,7 +4,6 @@ import { countries } from "../constants/countries.jsx";
 import { cars } from "../constants/cars.jsx";
 import SearchBar from "./components/searchBar/searchBar";
 import styled from "styled-components";
-
 // Styled Components
 const Container = styled.div`
   display: flex;
